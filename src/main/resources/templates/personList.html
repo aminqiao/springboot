@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Reading List</title>
+    <link rel="stylesheet" th:href="@{/person/person.css}"/>
+</head>
+<body>
+<h2>Your Reading List</h2>
+<div th:unless="${#lists.isEmpty(persons)}">
+    <dl th:each="person : ${persons}">
+        <dt class="personHeadline">
+            <span th:text="${person.name}">Title</span>
+        </dt>
+        <dd class="personDescription">
+          <span th:if="${person.age}"
+                th:text="${person.age}">Description</span>
+        </dd>
+    </dl>
+</div>
+<div th:if="${#lists.isEmpty(persons)}">
+    <p>You have no persons in your person list</p>
+</div>
+
+<hr/>
+
+<h3>Add a prson</h3>
+<form method="POST">
+    <label for="name">Names:</label>
+    <input type="text" name="name" size="50"/><br/>
+    <label for="age">Age:</label>
+    <input type="text" name="age" size="50"/><br/>
+    <input type="submit"/>
+</form>
+
+</body>
+</html>

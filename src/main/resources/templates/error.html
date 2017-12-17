@@ -1,0 +1,16 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Oops!</title>
+</head>
+
+<html>
+<div>
+    <span>Oops!</span><br/>
+    <img th:src="@{/pic/Desert.jpg}"/>
+    <p>There seems to be a problem with the page you requested
+        (<span th:text="${path}"></span>).</p>
+    <p th:text="${'Details: ' + message}"></p>
+</div>
+</html>
+
+</html> 
