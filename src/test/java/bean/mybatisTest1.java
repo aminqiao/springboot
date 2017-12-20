@@ -39,7 +39,7 @@ public class mybatisTest1 {
 
     @Test
     public void testDeleteByPrimaryKey() {
-        String username = "www";
-        userinfoMapper.deleteByPrimaryKey(username);
+        int id = 1;
+        userinfoMapper.deleteByPrimaryKey(id);
     }
 }

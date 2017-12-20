@@ -22,6 +22,7 @@
 <script th:src="@{jquery-3.2.1.min.js}"></script>
 <script type="text/javascript">
     var stompClient=null;
+    var userId = 1;
     function setConnected (connected) {
       document.getElementById("connect").disabled=connected;
       document.getElementById("disconnect").disable=!connected;
@@ -34,8 +35,8 @@
       stompClient.connect({},function (frame) {
         setConnected(true);
         console.log('connected:'+frame);
-        stompClient.subscribe('/topic/getResponse',function (response) {
-          showResponse(JSON.parse(response.body).responseMessage)
+        stompClient.subscribe('/user/'+userId+'/message',function (response) {
+          showResponse(response.body)
         });
       });
     }
@@ -48,7 +49,7 @@
     }
     function sendName () {
       var name=$('#name').val();
-      stompClient.send("/welcome",{},JSON.stringify({'name':name}));
+      stompClient.send("/app/toUser",{},JSON.stringify({'name':name}));
     }
     function showResponse (message) {
       var response=$('#response');

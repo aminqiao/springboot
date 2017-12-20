@@ -9,6 +9,8 @@ import lombok.Data;
 @Data
 public class WiselyMessage {
     private String name;
+    private String destinations;
+    private String userId;
 
     public String getName() {
         return name;
